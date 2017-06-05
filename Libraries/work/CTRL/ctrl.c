@@ -28,7 +28,7 @@ int ad_all;
 
 int ENCODE;
 int resultturn;
-
+int old_resulturn;
 //归一前整合*************************  2017-6-1  wjl  //
 //声明8个变量存放最大最小值
 float   ad1max=600,ad1min=200,ad2max=600,ad2min=200;
@@ -283,16 +283,21 @@ void ctrl(void)
 	int sum_ad=0;
 	u8 side_flag=0;                    //检测旁边跑道标志位
 //	u8 Lose=0;
-		sum=ad4-ad3;
-	resultturn=Turn_speed(sum);
+//		sum=ad4-ad3;
+//	resultturn=Turn_speed(sum);
 	
 if((ad3>=50)&&(ad4>=50))
 {
-	  spe=0;
+//	  spe=0;
 	  streePID(sum_diff);
 }
+
+if((ad3>=200)&&(ad4>=200))
+{
+	spe=0;
+}
 //	else
-//		FTM_PWM_ChangeDuty(HW_FTM0, HW_FTM_CH2,0);
+//		resultturn=old_resulturn;
 //		sum_diff=0;
 ///******************************丢线*************************/
 
@@ -336,17 +341,23 @@ if((ad3>=50)&&(ad4>=50))
 //	{
 //		Lose=2;
 //	}
-	
-	if(ad4<50)
-	{
-		if(spe==0)
-		spe=2;
-	}
-	if(ad3<50)
+
+	if(ad3<60)
 	{
 		if(spe==0)
 		spe=1;
 	}
+		
+	if(ad4<60)
+	{
+		if(spe==0)
+		spe=2;
+	}
+//	if((ad3<50 ) && (ad4<50))
+//	{ 
+//		 if(spe==0)
+//	   spe=3;
+//	}
 	switch(spe)
 	{
 		case 1:
@@ -355,7 +366,11 @@ if((ad3>=50)&&(ad4>=50))
 		case 2:
 			resultturn=MEDIAN+1000;
 		  break;
+//		case 3:
+//			resultturn=old_resulturn;
+//		  break;
 		default:
+			//resultturn=old_resulturn;
 			break;
 	}
 /*************************丢线********************************/
@@ -363,6 +378,7 @@ if((ad3>=50)&&(ad4>=50))
 	
 	//舵机最后PWM输出 
 		FTM_PWM_ChangeDuty(HW_FTM1, HW_FTM_CH1, resultturn);    //  -900  4600  +1000  resultturn
+	old_resulturn=resultturn;
 }
 
 //void filter(void)       //滤波

@@ -214,7 +214,7 @@ void AdStartTask(void *pdata)
 //			  filter();                //ad采值
 			  ad();
 // 归一前处理
-		//      guiyi_qian();
+		  //    guiyi_qian();
 		//	    guiyi_ad3=ad4;
 		//	    guiyi_ad1=ad3;
 			guiyi();
@@ -268,6 +268,7 @@ void TurnStartTask(void *pdata)
 	while(1)
 	{
      ctrl();
+		OSTimeDlyHMSM(0, 0, 0, 5);
   }
 }
 

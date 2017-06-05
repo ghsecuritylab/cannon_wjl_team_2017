@@ -25,7 +25,7 @@
 #define APP_KEY_PRIO               (8)            //ÔÚuiÖ®Ç°
 #define APP_AD_PRIO                (5) 
 #define APP_SPEED_PRIO             (6) 
-#define APP_TURN_PRIO              (10) 
+#define APP_TURN_PRIO              (7) 
 //#define APP_BLUETOOTH_PRIO         (11)           //À¶ÑÀ
 
 

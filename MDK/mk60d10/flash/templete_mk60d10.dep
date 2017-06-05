@@ -33,7 +33,7 @@ I (E:\study\KEIL\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (..\Libraries\utilities\uCOSII\core\uCOS_II.H)(0x5820915A)
 I (..\Libraries\utilities\uCOSII\config\os_cfg.h)(0x5820915A)
 I (..\Libraries\utilities\uCOSII\port\os_cpu.h)(0x5820915A)
-I (..\Libraries\app\app.h)(0x58C4CAE8)
+I (..\Libraries\app\app.h)(0x5933C77C)
 I (..\Libraries\work\UI\ui.h)(0x58C67180)
 I (..\Libraries\work\OLED\oled.h)(0x58455E61)
 I (..\Libraries\work\KEY\KEY.h)(0x58455984)
@@ -427,8 +427,8 @@ I (..\Libraries\utilities\uCOSII\core\ucos_ii.h)(0x5820915A)
 I (..\Libraries\utilities\uCOSII\config\os_cfg.h)(0x5820915A)
 I (..\Libraries\utilities\uCOSII\port\os_cpu.h)(0x5820915A)
 F (..\Libraries\utilities\uCOSII\port\os_cpu_a_keil.asm)(0x5820915A)(--cpu Cortex-M4 -g --apcs=interwork -I C:\Users\WJL-PC\Desktop\2017_6_2\MDK\RTE-I E:\study\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include-I E:\study\KEIL\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 514" --pd "MK60DN512xxx10 SETA 1"--list .\os_cpu_a_keil.lst --xref -o .\mk60d10\flash\os_cpu_a_keil.o --depend .\mk60d10\flash\os_cpu_a_keil.d)
-F (..\Libraries\app\app.c)(0x59314FE3)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork -I..\Libraries\startup\DeviceSupport\MDK-ARM -I..\Libraries\startup -I..\Libraries\drivers\K\inc -I..\Libraries\drivers\K\src -I..\Libraries\app -I.\mk60d10\flash -I.\mk60d10 -I..\src -I..\Libraries\utilities\uCOSII\config -I..\Libraries\utilities\uCOSII\core -I..\Libraries\utilities\uCOSII\port -I..\Libraries\work -I..\Libraries\work\UI -I..\Libraries\work\KEY -I..\Libraries\work\OLED -I..\Libraries\work\CTRL -I..\Libraries\work\FLASHUI -I..\Libraries -I..\Libraries\work\AD -I..\Libraries\drivers -I..\Libraries\work\PWM -I..\Libraries\work\CONM -I..\Libraries\startup\CoreSupport --c99-I C:\Users\WJL-PC\Desktop\2017_6_2\MDK\RTE-I E:\study\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include-I E:\study\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DMK60DN512xxx10 -DMK60D10 -DRAVEN -DDEBUG-o .\mk60d10\flash\app.o --omf_browse .\mk60d10\flash\app.crf --depend .\mk60d10\flash\app.d)
-I (..\Libraries\app\app.h)(0x58C4CAE8)
+F (..\Libraries\app\app.c)(0x5933D35C)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork -I..\Libraries\startup\DeviceSupport\MDK-ARM -I..\Libraries\startup -I..\Libraries\drivers\K\inc -I..\Libraries\drivers\K\src -I..\Libraries\app -I.\mk60d10\flash -I.\mk60d10 -I..\src -I..\Libraries\utilities\uCOSII\config -I..\Libraries\utilities\uCOSII\core -I..\Libraries\utilities\uCOSII\port -I..\Libraries\work -I..\Libraries\work\UI -I..\Libraries\work\KEY -I..\Libraries\work\OLED -I..\Libraries\work\CTRL -I..\Libraries\work\FLASHUI -I..\Libraries -I..\Libraries\work\AD -I..\Libraries\drivers -I..\Libraries\work\PWM -I..\Libraries\work\CONM -I..\Libraries\startup\CoreSupport --c99-I C:\Users\WJL-PC\Desktop\2017_6_2\MDK\RTE-I E:\study\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include-I E:\study\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DMK60DN512xxx10 -DMK60D10 -DRAVEN -DDEBUG-o .\mk60d10\flash\app.o --omf_browse .\mk60d10\flash\app.crf --depend .\mk60d10\flash\app.d)
+I (..\Libraries\app\app.h)(0x5933C77C)
 I (..\Libraries\utilities\uCOSII\config\includes.h)(0x584F5D19)
 I (E:\study\KEIL\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (E:\study\KEIL\ARM\ARMCC\include\string.h)(0x5475F300)
@@ -475,7 +475,7 @@ I (..\Libraries\startup\CoreSupport\core_cmInstr.h)(0x5820915A)
 I (..\Libraries\startup\CoreSupport\core_cmFunc.h)(0x5820915A)
 I (..\Libraries\startup\CoreSupport\core_cm4_simd.h)(0x5820915A)
 I (E:\study\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include\system_MK60D10.h)(0x5167A5DE)
-F (..\Libraries\work\CTRL\ctrl.c)(0x59315955)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork -I..\Libraries\startup\DeviceSupport\MDK-ARM -I..\Libraries\startup -I..\Libraries\drivers\K\inc -I..\Libraries\drivers\K\src -I..\Libraries\app -I.\mk60d10\flash -I.\mk60d10 -I..\src -I..\Libraries\utilities\uCOSII\config -I..\Libraries\utilities\uCOSII\core -I..\Libraries\utilities\uCOSII\port -I..\Libraries\work -I..\Libraries\work\UI -I..\Libraries\work\KEY -I..\Libraries\work\OLED -I..\Libraries\work\CTRL -I..\Libraries\work\FLASHUI -I..\Libraries -I..\Libraries\work\AD -I..\Libraries\drivers -I..\Libraries\work\PWM -I..\Libraries\work\CONM -I..\Libraries\startup\CoreSupport --c99-I C:\Users\WJL-PC\Desktop\2017_6_2\MDK\RTE-I E:\study\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include-I E:\study\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DMK60DN512xxx10 -DMK60D10 -DRAVEN -DDEBUG-o .\mk60d10\flash\ctrl.o --omf_browse .\mk60d10\flash\ctrl.crf --depend .\mk60d10\flash\ctrl.d)
+F (..\Libraries\work\CTRL\ctrl.c)(0x5933D5CE)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork -I..\Libraries\startup\DeviceSupport\MDK-ARM -I..\Libraries\startup -I..\Libraries\drivers\K\inc -I..\Libraries\drivers\K\src -I..\Libraries\app -I.\mk60d10\flash -I.\mk60d10 -I..\src -I..\Libraries\utilities\uCOSII\config -I..\Libraries\utilities\uCOSII\core -I..\Libraries\utilities\uCOSII\port -I..\Libraries\work -I..\Libraries\work\UI -I..\Libraries\work\KEY -I..\Libraries\work\OLED -I..\Libraries\work\CTRL -I..\Libraries\work\FLASHUI -I..\Libraries -I..\Libraries\work\AD -I..\Libraries\drivers -I..\Libraries\work\PWM -I..\Libraries\work\CONM -I..\Libraries\startup\CoreSupport --c99-I C:\Users\WJL-PC\Desktop\2017_6_2\MDK\RTE-I E:\study\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include-I E:\study\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DMK60DN512xxx10 -DMK60D10 -DRAVEN -DDEBUG-o .\mk60d10\flash\ctrl.o --omf_browse .\mk60d10\flash\ctrl.crf --depend .\mk60d10\flash\ctrl.d)
 I (..\Libraries\work\CTRL\ctrl.h)(0x592FE677)
 I (..\Libraries\utilities\uCOSII\config\includes.h)(0x584F5D19)
 I (E:\study\KEIL\ARM\ARMCC\include\stdio.h)(0x5475F300)
@@ -599,7 +599,7 @@ I (..\Libraries\startup\CoreSupport\core_cmInstr.h)(0x5820915A)
 I (..\Libraries\startup\CoreSupport\core_cmFunc.h)(0x5820915A)
 I (..\Libraries\startup\CoreSupport\core_cm4_simd.h)(0x5820915A)
 I (E:\study\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include\system_MK60D10.h)(0x5167A5DE)
-I (..\Libraries\app\app.h)(0x58C4CAE8)
+I (..\Libraries\app\app.h)(0x5933C77C)
 I (..\Libraries\work\KEY\key.h)(0x58455984)
 I (..\Libraries\work\AD\ad.h)(0x59168CA0)
 I (..\Libraries\drivers\K\inc\adc.h)(0x5820915A)

@@ -216,7 +216,7 @@ Section Cross References
     ctrl.o(.text) refers to daddsub_clz.o(x$fpl$dsub) for __aeabi_dsub
     ctrl.o(.text) refers to dfix.o(x$fpl$dfix) for __aeabi_d2iz
     ctrl.o(.text) refers to ctrl.o(.bss) for error
-    ctrl.o(.text) refers to app.o(.data) for sum
+    ctrl.o(.text) refers to app.o(.data) for sum_diff
     flashui.o(.text) refers to fmul.o(x$fpl$fmul) for __aeabi_fmul
     flashui.o(.text) refers to ffixu.o(x$fpl$ffixu) for __aeabi_f2uiz
     flashui.o(.text) refers to fflt_clz.o(x$fpl$ffltu) for __aeabi_ui2f
@@ -883,8 +883,8 @@ Image Symbol Table
     .text                                    0x00009310   Section        0  os_cpu_c.o(.text)
     .text                                    0x00009418   Section      176  os_cpu_a_keil.o(.text)
     .text                                    0x000094c8   Section        0  app.o(.text)
-    .text                                    0x00009800   Section        0  ad.o(.text)
-    .text                                    0x00009ad4   Section        0  ctrl.o(.text)
+    .text                                    0x0000980c   Section        0  ad.o(.text)
+    .text                                    0x00009ae0   Section        0  ctrl.o(.text)
     .text                                    0x0000a434   Section        0  flashui.o(.text)
     flash_cmd                                0x0000a435   Thumb Code    38  flashui.o(.text)
     .text                                    0x0000a658   Section        0  key.o(.text)
@@ -993,8 +993,8 @@ Image Symbol Table
     DMA_PORT_TriggerSourceTable              0x0000db40   Data          20  conm.o(.constdata)
     .conststring                             0x0000db54   Section       17  uart.o(.conststring)
     .data                                    0x1fff0000   Section        4  system_mk60d10.o(.data)
-    .data                                    0x1fff0004   Section        8  dac.o(.data)
-    DAC_CallBackTable                        0x1fff0004   Data           8  dac.o(.data)
+    .data                                    0x1fff0004   Section        8  can.o(.data)
+    CAN_CallBackTable                        0x1fff0004   Data           8  can.o(.data)
     .data                                    0x1fff000c   Section       20  flash.o(.data)
     .data                                    0x1fff0020   Section        4  lptmr.o(.data)
     LPTMR_CallBackTable                      0x1fff0020   Data           4  lptmr.o(.data)
@@ -1003,13 +1003,14 @@ Image Symbol Table
     .data                                    0x1fff0028   Section       52  rtc.o(.data)
     RTC_CallBackTable                        0x1fff0028   Data           4  rtc.o(.data)
     mdays                                    0x1fff002c   Data          48  rtc.o(.data)
-    .data                                    0x1fff005c   Section       17  uart.o(.data)
-    UART_DebugInstance                       0x1fff005c   Data           1  uart.o(.data)
-    ntab                                     0x1fff0068   Data           4  uart.o(.data)
-    is_fitst_init                            0x1fff006c   Data           1  uart.o(.data)
-    .data                                    0x1fff0070   Section       96  os_core.o(.data)
-    .data                                    0x1fff00d0   Section        6  os_cpu_c.o(.data)
-    OSTmrCtr                                 0x1fff00d4   Data           2  os_cpu_c.o(.data)
+    .data                                    0x1fff005c   Section        8  systick.o(.data)
+    fac_us                                   0x1fff005c   Data           4  systick.o(.data)
+    fac_ms                                   0x1fff0060   Data           4  systick.o(.data)
+    .data                                    0x1fff0064   Section       17  uart.o(.data)
+    UART_DebugInstance                       0x1fff0064   Data           1  uart.o(.data)
+    ntab                                     0x1fff0070   Data           4  uart.o(.data)
+    is_fitst_init                            0x1fff0074   Data           1  uart.o(.data)
+    .data                                    0x1fff0078   Section       96  os_core.o(.data)
     .data                                    0x1fff00d8   Section       20  app.o(.data)
     .data                                    0x1fff00ec   Section        4  flashui.o(.data)
     .bss                                     0x1fff00f0   Section       64  dma.o(.bss)
@@ -1031,8 +1032,8 @@ Image Symbol Table
     __initial_sp                             0x1fff2f60   Data           0  startup_mk60d10.o(STACK)
     .data                                    0x20000000   Section        8  adc.o(.data)
     ADC_CallBackTable                        0x20000000   Data           8  adc.o(.data)
-    .data                                    0x20000008   Section        8  can.o(.data)
-    CAN_CallBackTable                        0x20000008   Data           8  can.o(.data)
+    .data                                    0x20000008   Section        8  dac.o(.data)
+    DAC_CallBackTable                        0x20000008   Data           8  dac.o(.data)
     .data                                    0x20000010   Section        4  dma.o(.data)
     DMAChlMAP                                0x20000010   Data           4  dma.o(.data)
     .data                                    0x20000014   Section       16  enet.o(.data)
@@ -1042,46 +1043,45 @@ Image Symbol Table
     ENET_CallBackRxTable                     0x20000020   Data           4  enet.o(.data)
     .data                                    0x20000024   Section        4  pdb.o(.data)
     PDB_CallBackTable                        0x20000024   Data           4  pdb.o(.data)
-    .data                                    0x20000028   Section        8  systick.o(.data)
-    fac_us                                   0x20000028   Data           4  systick.o(.data)
-    fac_ms                                   0x2000002c   Data           4  systick.o(.data)
-    .data                                    0x20000030   Section       68  tsi.o(.data)
-    TSI_CallBackTable                        0x20000030   Data           4  tsi.o(.data)
-    TSI_ChlCNTRTable                         0x20000034   Data          64  tsi.o(.data)
-    .data                                    0x20000074   Section        4  wdog.o(.data)
-    WDOG_CallBackTable                       0x20000074   Data           4  wdog.o(.data)
+    .data                                    0x20000028   Section       68  tsi.o(.data)
+    TSI_CallBackTable                        0x20000028   Data           4  tsi.o(.data)
+    TSI_ChlCNTRTable                         0x2000002c   Data          64  tsi.o(.data)
+    .data                                    0x2000006c   Section        4  wdog.o(.data)
+    WDOG_CallBackTable                       0x2000006c   Data           4  wdog.o(.data)
+    .data                                    0x20000070   Section        6  os_cpu_c.o(.data)
+    OSTmrCtr                                 0x20000074   Data           2  os_cpu_c.o(.data)
     .data                                    0x20000078   Section      104  ad.o(.data)
-    .data                                    0x200000e0   Section      118  ctrl.o(.data)
-    LastSpeedCut0                            0x2000014e   Data           2  ctrl.o(.data)
-    LastSpeedCut1                            0x20000150   Data           2  ctrl.o(.data)
-    LastSpeedCut2                            0x20000152   Data           2  ctrl.o(.data)
-    SpeedLastPWMK                            0x20000154   Data           2  ctrl.o(.data)
-    .data                                    0x20000158   Section       61  ui.o(.data)
-    Arrow                                    0x20000158   Data           1  ui.o(.data)
-    SetArrow                                 0x2000018c   Data           1  ui.o(.data)
-    Page                                     0x2000018d   Data           1  ui.o(.data)
-    Item                                     0x2000018e   Data           1  ui.o(.data)
-    SetArrow                                 0x2000018f   Data           1  ui.o(.data)
-    Page                                     0x20000190   Data           1  ui.o(.data)
-    Item                                     0x20000191   Data           1  ui.o(.data)
-    SetArrow                                 0x20000192   Data           1  ui.o(.data)
-    Page                                     0x20000193   Data           1  ui.o(.data)
-    Item                                     0x20000194   Data           1  ui.o(.data)
-    .data                                    0x20000195   Section        2  conm.o(.data)
-    dummy1                                   0x20000195   Data           1  conm.o(.data)
-    dummy2                                   0x20000196   Data           1  conm.o(.data)
-    .bss                                     0x20000198   Section       12  ftm.o(.bss)
-    FTM_CallBackTable                        0x20000198   Data          12  ftm.o(.bss)
-    .bss                                     0x200001a4   Section       20  gpio.o(.bss)
-    GPIO_CallBackTable                       0x200001a4   Data          20  gpio.o(.bss)
-    .bss                                     0x200001b8   Section       48  uart.o(.bss)
-    UART_CallBackTxTable                     0x200001b8   Data          24  uart.o(.bss)
-    UART_CallBackRxTable                     0x200001d0   Data          24  uart.o(.bss)
-    .bss                                     0x200001e8   Section      512  os_cpu_c.o(.bss)
-    .bss                                     0x200003e8   Section    10752  app.o(.bss)
-    .bss                                     0x20002de8   Section      256  ad.o(.bss)
-    .bss                                     0x20002ee8   Section       20  ctrl.o(.bss)
-    .bss                                     0x20002efc   Section       96  libspace.o(.bss)
+    .data                                    0x200000e0   Section      122  ctrl.o(.data)
+    LastSpeedCut0                            0x20000152   Data           2  ctrl.o(.data)
+    LastSpeedCut1                            0x20000154   Data           2  ctrl.o(.data)
+    LastSpeedCut2                            0x20000156   Data           2  ctrl.o(.data)
+    SpeedLastPWMK                            0x20000158   Data           2  ctrl.o(.data)
+    .data                                    0x2000015c   Section       61  ui.o(.data)
+    Arrow                                    0x2000015c   Data           1  ui.o(.data)
+    SetArrow                                 0x20000190   Data           1  ui.o(.data)
+    Page                                     0x20000191   Data           1  ui.o(.data)
+    Item                                     0x20000192   Data           1  ui.o(.data)
+    SetArrow                                 0x20000193   Data           1  ui.o(.data)
+    Page                                     0x20000194   Data           1  ui.o(.data)
+    Item                                     0x20000195   Data           1  ui.o(.data)
+    SetArrow                                 0x20000196   Data           1  ui.o(.data)
+    Page                                     0x20000197   Data           1  ui.o(.data)
+    Item                                     0x20000198   Data           1  ui.o(.data)
+    .data                                    0x20000199   Section        2  conm.o(.data)
+    dummy1                                   0x20000199   Data           1  conm.o(.data)
+    dummy2                                   0x2000019a   Data           1  conm.o(.data)
+    .bss                                     0x2000019c   Section       12  ftm.o(.bss)
+    FTM_CallBackTable                        0x2000019c   Data          12  ftm.o(.bss)
+    .bss                                     0x200001a8   Section       20  gpio.o(.bss)
+    GPIO_CallBackTable                       0x200001a8   Data          20  gpio.o(.bss)
+    .bss                                     0x200001bc   Section       48  uart.o(.bss)
+    UART_CallBackTxTable                     0x200001bc   Data          24  uart.o(.bss)
+    UART_CallBackRxTable                     0x200001d4   Data          24  uart.o(.bss)
+    .bss                                     0x200001ec   Section      512  os_cpu_c.o(.bss)
+    .bss                                     0x200003ec   Section    10752  app.o(.bss)
+    .bss                                     0x20002dec   Section      256  ad.o(.bss)
+    .bss                                     0x20002eec   Section       20  ctrl.o(.bss)
+    .bss                                     0x20002f00   Section       96  libspace.o(.bss)
 
     Global Symbols
 
@@ -1609,22 +1609,22 @@ Image Symbol Table
     KeyStartTask                             0x000094e7   Thumb Code   426  app.o(.text)
     AdStartTask                              0x00009691   Thumb Code    74  app.o(.text)
     speedStartTask                           0x000096db   Thumb Code    64  app.o(.text)
-    TurnStartTask                            0x0000971b   Thumb Code    10  app.o(.text)
-    AppStartTast                             0x00009725   Thumb Code   114  app.o(.text)
-    allInit                                  0x00009797   Thumb Code    50  app.o(.text)
-    Init_AD                                  0x00009801   Thumb Code    46  ad.o(.text)
-    adc_once                                 0x0000982f   Thumb Code    26  ad.o(.text)
-    ad                                       0x00009849   Thumb Code   346  ad.o(.text)
-    filter                                   0x000099a3   Thumb Code     8  ad.o(.text)
-    guiyi                                    0x000099ab   Thumb Code   108  ad.o(.text)
-    max_min                                  0x00009a17   Thumb Code   112  ad.o(.text)
-    speedPID                                 0x00009ad5   Thumb Code   312  ctrl.o(.text)
-    speedCtrl                                0x00009c0d   Thumb Code    50  ctrl.o(.text)
-    guiyi_qian                               0x00009c3f   Thumb Code   814  ctrl.o(.text)
-    streePID                                 0x00009f6d   Thumb Code   192  ctrl.o(.text)
-    linePID                                  0x0000a02d   Thumb Code   150  ctrl.o(.text)
-    Turn_speed                               0x0000a0c3   Thumb Code   568  ctrl.o(.text)
-    ctrl                                     0x0000a2fb   Thumb Code   298  ctrl.o(.text)
+    TurnStartTask                            0x0000971b   Thumb Code    22  app.o(.text)
+    AppStartTast                             0x00009731   Thumb Code   114  app.o(.text)
+    allInit                                  0x000097a3   Thumb Code    50  app.o(.text)
+    Init_AD                                  0x0000980d   Thumb Code    46  ad.o(.text)
+    adc_once                                 0x0000983b   Thumb Code    26  ad.o(.text)
+    ad                                       0x00009855   Thumb Code   346  ad.o(.text)
+    filter                                   0x000099af   Thumb Code     8  ad.o(.text)
+    guiyi                                    0x000099b7   Thumb Code   108  ad.o(.text)
+    max_min                                  0x00009a23   Thumb Code   112  ad.o(.text)
+    speedPID                                 0x00009ae1   Thumb Code   312  ctrl.o(.text)
+    speedCtrl                                0x00009c19   Thumb Code    50  ctrl.o(.text)
+    guiyi_qian                               0x00009c4b   Thumb Code   814  ctrl.o(.text)
+    streePID                                 0x00009f79   Thumb Code   192  ctrl.o(.text)
+    linePID                                  0x0000a039   Thumb Code   150  ctrl.o(.text)
+    ctrl                                     0x0000a0cf   Thumb Code   174  ctrl.o(.text)
+    Turn_speed                               0x0000a17d   Thumb Code   686  ctrl.o(.text)
     flash_write                              0x0000a45b   Thumb Code    88  flashui.o(.text)
     flash_erase_sector                       0x0000a4b3   Thumb Code    64  flashui.o(.text)
     Falsh_Reserve                            0x0000a4f3   Thumb Code   190  flashui.o(.text)
@@ -1748,39 +1748,38 @@ Image Symbol Table
     SystemCoreClock                          0x1fff0000   Data           4  system_mk60d10.o(.data)
     s_flash_command_run                      0x1fff000c   Data          14  flash.o(.data)
     s_flash_run_entry                        0x1fff001c   Data           4  flash.o(.data)
-    __stdout                                 0x1fff0060   Data           4  uart.o(.data)
-    __stdin                                  0x1fff0064   Data           4  uart.o(.data)
-    OSCtxSwCtr                               0x1fff0070   Data           4  os_core.o(.data)
-    OSEventFreeList                          0x1fff0074   Data           4  os_core.o(.data)
-    OSFlagFreeList                           0x1fff0078   Data           4  os_core.o(.data)
-    OSCPUUsage                               0x1fff007c   Data           1  os_core.o(.data)
-    OSIdleCtrMax                             0x1fff0080   Data           4  os_core.o(.data)
-    OSIdleCtrRun                             0x1fff0084   Data           4  os_core.o(.data)
-    OSStatRdy                                0x1fff0088   Data           1  os_core.o(.data)
-    OSIntNesting                             0x1fff0089   Data           1  os_core.o(.data)
-    OSLockNesting                            0x1fff008a   Data           1  os_core.o(.data)
-    OSPrioCur                                0x1fff008b   Data           1  os_core.o(.data)
-    OSPrioHighRdy                            0x1fff008c   Data           1  os_core.o(.data)
-    OSRdyGrp                                 0x1fff008d   Data           1  os_core.o(.data)
-    OSRdyTbl                                 0x1fff008e   Data           8  os_core.o(.data)
-    OSRunning                                0x1fff0096   Data           1  os_core.o(.data)
-    OSTaskCtr                                0x1fff0097   Data           1  os_core.o(.data)
-    OSIdleCtr                                0x1fff0098   Data           4  os_core.o(.data)
-    OSTCBCur                                 0x1fff009c   Data           4  os_core.o(.data)
-    OSTCBFreeList                            0x1fff00a0   Data           4  os_core.o(.data)
-    OSTCBHighRdy                             0x1fff00a4   Data           4  os_core.o(.data)
-    OSTCBList                                0x1fff00a8   Data           4  os_core.o(.data)
-    OSTickStepState                          0x1fff00ac   Data           1  os_core.o(.data)
-    OSMemFreeList                            0x1fff00b0   Data           4  os_core.o(.data)
-    OSQFreeList                              0x1fff00b4   Data           4  os_core.o(.data)
-    OSTime                                   0x1fff00b8   Data           4  os_core.o(.data)
-    OSTmrFree                                0x1fff00bc   Data           2  os_core.o(.data)
-    OSTmrUsed                                0x1fff00be   Data           2  os_core.o(.data)
-    OSTmrTime                                0x1fff00c0   Data           4  os_core.o(.data)
-    OSTmrSem                                 0x1fff00c4   Data           4  os_core.o(.data)
-    OSTmrSemSignal                           0x1fff00c8   Data           4  os_core.o(.data)
-    OSTmrFreeList                            0x1fff00cc   Data           4  os_core.o(.data)
-    OS_CPU_ExceptStkBase                     0x1fff00d0   Data           4  os_cpu_c.o(.data)
+    __stdout                                 0x1fff0068   Data           4  uart.o(.data)
+    __stdin                                  0x1fff006c   Data           4  uart.o(.data)
+    OSCtxSwCtr                               0x1fff0078   Data           4  os_core.o(.data)
+    OSEventFreeList                          0x1fff007c   Data           4  os_core.o(.data)
+    OSFlagFreeList                           0x1fff0080   Data           4  os_core.o(.data)
+    OSCPUUsage                               0x1fff0084   Data           1  os_core.o(.data)
+    OSIdleCtrMax                             0x1fff0088   Data           4  os_core.o(.data)
+    OSIdleCtrRun                             0x1fff008c   Data           4  os_core.o(.data)
+    OSStatRdy                                0x1fff0090   Data           1  os_core.o(.data)
+    OSIntNesting                             0x1fff0091   Data           1  os_core.o(.data)
+    OSLockNesting                            0x1fff0092   Data           1  os_core.o(.data)
+    OSPrioCur                                0x1fff0093   Data           1  os_core.o(.data)
+    OSPrioHighRdy                            0x1fff0094   Data           1  os_core.o(.data)
+    OSRdyGrp                                 0x1fff0095   Data           1  os_core.o(.data)
+    OSRdyTbl                                 0x1fff0096   Data           8  os_core.o(.data)
+    OSRunning                                0x1fff009e   Data           1  os_core.o(.data)
+    OSTaskCtr                                0x1fff009f   Data           1  os_core.o(.data)
+    OSIdleCtr                                0x1fff00a0   Data           4  os_core.o(.data)
+    OSTCBCur                                 0x1fff00a4   Data           4  os_core.o(.data)
+    OSTCBFreeList                            0x1fff00a8   Data           4  os_core.o(.data)
+    OSTCBHighRdy                             0x1fff00ac   Data           4  os_core.o(.data)
+    OSTCBList                                0x1fff00b0   Data           4  os_core.o(.data)
+    OSTickStepState                          0x1fff00b4   Data           1  os_core.o(.data)
+    OSMemFreeList                            0x1fff00b8   Data           4  os_core.o(.data)
+    OSQFreeList                              0x1fff00bc   Data           4  os_core.o(.data)
+    OSTime                                   0x1fff00c0   Data           4  os_core.o(.data)
+    OSTmrFree                                0x1fff00c4   Data           2  os_core.o(.data)
+    OSTmrUsed                                0x1fff00c6   Data           2  os_core.o(.data)
+    OSTmrTime                                0x1fff00c8   Data           4  os_core.o(.data)
+    OSTmrSem                                 0x1fff00cc   Data           4  os_core.o(.data)
+    OSTmrSemSignal                           0x1fff00d0   Data           4  os_core.o(.data)
+    OSTmrFreeList                            0x1fff00d4   Data           4  os_core.o(.data)
     msg_key                                  0x1fff00d8   Data           4  app.o(.data)
     key                                      0x1fff00dc   Data           1  app.o(.data)
     speedswitch                              0x1fff00e0   Data           4  app.o(.data)
@@ -1802,6 +1801,7 @@ Image Symbol Table
     streepid                                 0x1fff1b3c   Data          12  flashui.o(.bss)
     speedpid                                 0x1fff1b48   Data          12  flashui.o(.bss)
     linepid                                  0x1fff1b54   Data          12  flashui.o(.bss)
+    OS_CPU_ExceptStkBase                     0x20000070   Data           4  os_cpu_c.o(.data)
     max1                                     0x20000078   Data           4  ad.o(.data)
     min1                                     0x2000007c   Data           4  ad.o(.data)
     max2                                     0x20000080   Data           4  ad.o(.data)
@@ -1836,46 +1836,47 @@ Image Symbol Table
     ad_all                                   0x200000f4   Data           4  ctrl.o(.data)
     ENCODE                                   0x200000f8   Data           4  ctrl.o(.data)
     resultturn                               0x200000fc   Data           4  ctrl.o(.data)
-    ad1max                                   0x20000100   Data           4  ctrl.o(.data)
-    ad1min                                   0x20000104   Data           4  ctrl.o(.data)
-    ad2max                                   0x20000108   Data           4  ctrl.o(.data)
-    ad2min                                   0x2000010c   Data           4  ctrl.o(.data)
-    ad3max                                   0x20000110   Data           4  ctrl.o(.data)
-    ad3min                                   0x20000114   Data           4  ctrl.o(.data)
-    ad4max                                   0x20000118   Data           4  ctrl.o(.data)
-    ad4min                                   0x2000011c   Data           4  ctrl.o(.data)
-    ad1_sum                                  0x20000120   Data           4  ctrl.o(.data)
-    ad2_sum                                  0x20000124   Data           4  ctrl.o(.data)
-    ad3_sum                                  0x20000128   Data           4  ctrl.o(.data)
-    ad4_sum                                  0x2000012c   Data           4  ctrl.o(.data)
-    ad1_mei                                  0x20000130   Data           4  ctrl.o(.data)
-    ad2_mei                                  0x20000134   Data           4  ctrl.o(.data)
-    ad3_mei                                  0x20000138   Data           4  ctrl.o(.data)
-    ad4_mei                                  0x2000013c   Data           4  ctrl.o(.data)
-    use_fenshu                               0x20000140   Data           4  ctrl.o(.data)
-    ad_shang_max                             0x20000144   Data           4  ctrl.o(.data)
-    ad_xia_min                               0x20000148   Data           4  ctrl.o(.data)
-    inclu                                    0x2000014c   Data           1  ctrl.o(.data)
-    result                                   0x2000015c   Data           4  ui.o(.data)
-    FunctionPointer                          0x20000160   Data          44  ui.o(.data)
-    OS_CPU_ExceptStk                         0x200001e8   Data         512  os_cpu_c.o(.bss)
-    APP_START_STK                            0x200003e8   Data         512  app.o(.bss)
-    APP_UI_STK                               0x200005e8   Data        8192  app.o(.bss)
-    APP_KEY_STK                              0x200025e8   Data         512  app.o(.bss)
-    APP_AD_STK                               0x200027e8   Data         512  app.o(.bss)
-    APP_SPEED_STK                            0x200029e8   Data         512  app.o(.bss)
-    APP_TURN_STK                             0x20002be8   Data         512  app.o(.bss)
-    ad2_lv                                   0x20002de8   Data          40  ad.o(.bss)
-    ad4_lv                                   0x20002e10   Data          40  ad.o(.bss)
-    value_buf1                               0x20002e38   Data          48  ad.o(.bss)
-    value_buf2                               0x20002e68   Data          48  ad.o(.bss)
-    avg_ad1                                  0x20002e98   Data          20  ad.o(.bss)
-    avg_ad2                                  0x20002eac   Data          20  ad.o(.bss)
-    avg_ad3                                  0x20002ec0   Data          20  ad.o(.bss)
-    avg_ad4                                  0x20002ed4   Data          20  ad.o(.bss)
-    error                                    0x20002ee8   Data          20  ctrl.o(.bss)
-    __libspace_start                         0x20002efc   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20002f5c   Data           0  libspace.o(.bss)
+    old_resulturn                            0x20000100   Data           4  ctrl.o(.data)
+    ad1max                                   0x20000104   Data           4  ctrl.o(.data)
+    ad1min                                   0x20000108   Data           4  ctrl.o(.data)
+    ad2max                                   0x2000010c   Data           4  ctrl.o(.data)
+    ad2min                                   0x20000110   Data           4  ctrl.o(.data)
+    ad3max                                   0x20000114   Data           4  ctrl.o(.data)
+    ad3min                                   0x20000118   Data           4  ctrl.o(.data)
+    ad4max                                   0x2000011c   Data           4  ctrl.o(.data)
+    ad4min                                   0x20000120   Data           4  ctrl.o(.data)
+    ad1_sum                                  0x20000124   Data           4  ctrl.o(.data)
+    ad2_sum                                  0x20000128   Data           4  ctrl.o(.data)
+    ad3_sum                                  0x2000012c   Data           4  ctrl.o(.data)
+    ad4_sum                                  0x20000130   Data           4  ctrl.o(.data)
+    ad1_mei                                  0x20000134   Data           4  ctrl.o(.data)
+    ad2_mei                                  0x20000138   Data           4  ctrl.o(.data)
+    ad3_mei                                  0x2000013c   Data           4  ctrl.o(.data)
+    ad4_mei                                  0x20000140   Data           4  ctrl.o(.data)
+    use_fenshu                               0x20000144   Data           4  ctrl.o(.data)
+    ad_shang_max                             0x20000148   Data           4  ctrl.o(.data)
+    ad_xia_min                               0x2000014c   Data           4  ctrl.o(.data)
+    inclu                                    0x20000150   Data           1  ctrl.o(.data)
+    result                                   0x20000160   Data           4  ui.o(.data)
+    FunctionPointer                          0x20000164   Data          44  ui.o(.data)
+    OS_CPU_ExceptStk                         0x200001ec   Data         512  os_cpu_c.o(.bss)
+    APP_START_STK                            0x200003ec   Data         512  app.o(.bss)
+    APP_UI_STK                               0x200005ec   Data        8192  app.o(.bss)
+    APP_KEY_STK                              0x200025ec   Data         512  app.o(.bss)
+    APP_AD_STK                               0x200027ec   Data         512  app.o(.bss)
+    APP_SPEED_STK                            0x200029ec   Data         512  app.o(.bss)
+    APP_TURN_STK                             0x20002bec   Data         512  app.o(.bss)
+    ad2_lv                                   0x20002dec   Data          40  ad.o(.bss)
+    ad4_lv                                   0x20002e14   Data          40  ad.o(.bss)
+    value_buf1                               0x20002e3c   Data          48  ad.o(.bss)
+    value_buf2                               0x20002e6c   Data          48  ad.o(.bss)
+    avg_ad1                                  0x20002e9c   Data          20  ad.o(.bss)
+    avg_ad2                                  0x20002eb0   Data          20  ad.o(.bss)
+    avg_ad3                                  0x20002ec4   Data          20  ad.o(.bss)
+    avg_ad4                                  0x20002ed8   Data          20  ad.o(.bss)
+    error                                    0x20002eec   Data          20  ctrl.o(.bss)
+    __libspace_start                         0x20002f00   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20002f60   Data           0  libspace.o(.bss)
 
 
 
@@ -1885,7 +1886,7 @@ Memory Map of the image
 
   Image Entry point : 0x00000411
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x0000de30, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x0000dd08])
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x0000de34, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x0000dd08])
 
     Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x0000dba8, Max: 0x00080000, ABSOLUTE)
 
@@ -1977,9 +1978,9 @@ Memory Map of the image
     0x00008c20   0x000006f0   Code   RO          965    .text               os_tmr.o
     0x00009310   0x00000108   Code   RO          977    .text               os_cpu_c.o
     0x00009418   0x000000b0   Code   RO         1009    .text               os_cpu_a_keil.o
-    0x000094c8   0x00000338   Code   RO         1014    .text               app.o
-    0x00009800   0x000002d4   Code   RO         1064    .text               ad.o
-    0x00009ad4   0x00000960   Code   RO         1088    .text               ctrl.o
+    0x000094c8   0x00000344   Code   RO         1014    .text               app.o
+    0x0000980c   0x000002d4   Code   RO         1064    .text               ad.o
+    0x00009ae0   0x00000954   Code   RO         1088    .text               ctrl.o
     0x0000a434   0x00000224   Code   RO         1113    .text               flashui.o
     0x0000a658   0x00000064   Code   RO         1137    .text               key.o
     0x0000a6bc   0x000006ac   Code   RO         1157    .text               oled.o
@@ -2072,16 +2073,15 @@ Memory Map of the image
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x1fff0000   0x00000004   Data   RW           16    .data               system_mk60d10.o
-    0x1fff0004   0x00000008   Data   RW          329    .data               dac.o
+    0x1fff0004   0x00000008   Data   RW          211    .data               can.o
     0x1fff000c   0x00000014   Data   RW          404    .data               flash.o
     0x1fff0020   0x00000004   Data   RW          549    .data               lptmr.o
     0x1fff0024   0x00000004   Data   RW          619    .data               pit.o
     0x1fff0028   0x00000034   Data   RW          645    .data               rtc.o
-    0x1fff005c   0x00000011   Data   RW          773    .data               uart.o
-    0x1fff006d   0x00000003   PAD
-    0x1fff0070   0x00000060   Data   RW          848    .data               os_core.o
-    0x1fff00d0   0x00000006   Data   RW          979    .data               os_cpu_c.o
-    0x1fff00d6   0x00000002   PAD
+    0x1fff005c   0x00000008   Data   RW          723    .data               systick.o
+    0x1fff0064   0x00000011   Data   RW          773    .data               uart.o
+    0x1fff0075   0x00000003   PAD
+    0x1fff0078   0x00000060   Data   RW          848    .data               os_core.o
     0x1fff00d8   0x00000014   Data   RW         1016    .data               app.o
     0x1fff00ec   0x00000004   Data   RW         1115    .data               flashui.o
     0x1fff00f0   0x00000040   Zero   RW          354    .bss                dma.o
@@ -2095,32 +2095,33 @@ Memory Map of the image
     0x1fff1f60   0x00001000   Zero   RW            1    STACK               startup_mk60d10.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00002f5c, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000070])
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00002f60, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000070])
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x00000008   Data   RW          184    .data               adc.o
-    0x20000008   0x00000008   Data   RW          211    .data               can.o
+    0x20000008   0x00000008   Data   RW          329    .data               dac.o
     0x20000010   0x00000004   Data   RW          356    .data               dma.o
     0x20000014   0x00000010   Data   RW          379    .data               enet.o
     0x20000024   0x00000004   Data   RW          592    .data               pdb.o
-    0x20000028   0x00000008   Data   RW          723    .data               systick.o
-    0x20000030   0x00000044   Data   RW          745    .data               tsi.o
-    0x20000074   0x00000004   Data   RW          823    .data               wdog.o
+    0x20000028   0x00000044   Data   RW          745    .data               tsi.o
+    0x2000006c   0x00000004   Data   RW          823    .data               wdog.o
+    0x20000070   0x00000006   Data   RW          979    .data               os_cpu_c.o
+    0x20000076   0x00000002   PAD
     0x20000078   0x00000068   Data   RW         1066    .data               ad.o
-    0x200000e0   0x00000076   Data   RW         1090    .data               ctrl.o
-    0x20000156   0x00000002   PAD
-    0x20000158   0x0000003d   Data   RW         1197    .data               ui.o
-    0x20000195   0x00000002   Data   RW         1232    .data               conm.o
-    0x20000197   0x00000001   PAD
-    0x20000198   0x0000000c   Zero   RW          450    .bss                ftm.o
-    0x200001a4   0x00000014   Zero   RW          477    .bss                gpio.o
-    0x200001b8   0x00000030   Zero   RW          770    .bss                uart.o
-    0x200001e8   0x00000200   Zero   RW          978    .bss                os_cpu_c.o
-    0x200003e8   0x00002a00   Zero   RW         1015    .bss                app.o
-    0x20002de8   0x00000100   Zero   RW         1065    .bss                ad.o
-    0x20002ee8   0x00000014   Zero   RW         1089    .bss                ctrl.o
-    0x20002efc   0x00000060   Zero   RW         1403    .bss                c_w.l(libspace.o)
+    0x200000e0   0x0000007a   Data   RW         1090    .data               ctrl.o
+    0x2000015a   0x00000002   PAD
+    0x2000015c   0x0000003d   Data   RW         1197    .data               ui.o
+    0x20000199   0x00000002   Data   RW         1232    .data               conm.o
+    0x2000019b   0x00000001   PAD
+    0x2000019c   0x0000000c   Zero   RW          450    .bss                ftm.o
+    0x200001a8   0x00000014   Zero   RW          477    .bss                gpio.o
+    0x200001bc   0x00000030   Zero   RW          770    .bss                uart.o
+    0x200001ec   0x00000200   Zero   RW          978    .bss                os_cpu_c.o
+    0x200003ec   0x00002a00   Zero   RW         1015    .bss                app.o
+    0x20002dec   0x00000100   Zero   RW         1065    .bss                ad.o
+    0x20002eec   0x00000014   Zero   RW         1089    .bss                ctrl.o
+    0x20002f00   0x00000060   Zero   RW         1403    .bss                c_w.l(libspace.o)
 
 
 ==============================================================================
@@ -2132,11 +2133,11 @@ Image component sizes
 
        724         78          0        104        256       3132   ad.o
       1548         36         34          8          0      26602   adc.o
-       824         62          0         20      10752       3037   app.o
+       836         62          0         20      10752       3041   app.o
       2024         26         34          8          0      30126   can.o
        368         26          0          0          0       3456   common.o
        140         12         20          2          0       1225   conm.o
-      2400        260          0        118         20       5012   ctrl.o
+      2388        250          0        122         20       5062   ctrl.o
       1456         34         10          8          0       4897   dac.o
       1138         30         20          4         64       6658   dma.o
       1468         74          0         16       1630       7525   enet.o
@@ -2173,7 +2174,7 @@ Image component sizes
        352         14          0          4          0       3281   wdog.o
 
     ----------------------------------------------------------------------
-     46188       2414       5040        648      23508     512944   Object Totals
+     46188       2404       5040        652      23508     512998   Object Totals
          0          0         64          0          0          0   (incl. Generated)
          2          0         19          8          2          0   (incl. Padding)
 
@@ -2260,14 +2261,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     51192       2610       5040        648      23604     510712   Grand Totals
-     51192       2610       5040        352      23604     510712   ELF Image Totals (compressed)
-     51192       2610       5040        352          0          0   ROM Totals
+     51192       2600       5040        652      23604     510766   Grand Totals
+     51192       2600       5040        352      23604     510766   ELF Image Totals (compressed)
+     51192       2600       5040        352          0          0   ROM Totals
 
 ==============================================================================
 
     Total RO  Size (Code + RO Data)                56232 (  54.91kB)
-    Total RW  Size (RW Data + ZI Data)             24252 (  23.68kB)
+    Total RW  Size (RW Data + ZI Data)             24256 (  23.69kB)
     Total ROM Size (Code + RO Data + RW Data)      56584 (  55.26kB)
 
 ==============================================================================
