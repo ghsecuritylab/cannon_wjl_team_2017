@@ -127,7 +127,7 @@ u8 Run_UI()
 	u8 SR[]="RUNING";
 	u8 SS[]=" STOP ";
 	
-  char  ch;
+//  char  ch;
 	u8 key = 0;
   u8 err;
 	
@@ -249,7 +249,7 @@ u8	Read_UI()
 	static u8 Item = 1;
 	u8 key = 0;
   u8 err;
-  u8 i,n;
+  u8 i;
 	
   u8 S0[]  =  "Reading:";
 	u8 S1[]  =  "---------------------";
@@ -274,8 +274,8 @@ u8	Read_UI()
 	
 	int dnum[14];
 	
-  u8 AR[]="->";//显示箭头
-	u8 AC[]="  ";//清除箭头
+//  u8 AR[]="->";//显示箭头
+//	u8 AC[]="  ";//清除箭头
 	
 	OLED_CLS();//清屏
   OLED_P6x8Str(0,0,S0);
@@ -283,9 +283,9 @@ u8	Read_UI()
 	
 //  LCD_Write_Number(95,0, 0);
     
-	u8 SaveSetArrow = 2;
+//	u8 SaveSetArrow = 2;
 	u16 ArrowState = 0;//箭头状态标记0:正常选择项 1:数值修改
-  u8 text[5];
+ // u8 text[5];
 	while(1)
 	{
 		if(key == 4)
@@ -318,7 +318,7 @@ u8	Read_UI()
 u8 Set_UI()
 {
    
-  int a,b;
+ // int a,b;
   u8 S0[]  =  "Set Variable Bett:";
 	u8 S1[]  =  "---------------------";
 	u8 SS[SetOptionsNum][19]={

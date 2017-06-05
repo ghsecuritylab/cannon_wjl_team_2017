@@ -26,66 +26,70 @@ Project File Date:  05/24/2017
 
 <h2>Output:</h2>
 Build target 'mk60d10'
-compiling ctrl.c...
+compiling ui.c...
+..\Libraries\work\AD\ad.h(11): warning:  #1-D: last line of file ends without a newline
+  #endif
 ..\Libraries\work\PWM\pwm.h(6): warning:  #1295-D: Deprecated declaration speedInit - give arg types
   void speedInit();
 ..\Libraries\work\PWM\pwm.h(8): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Libraries\work\CTRL\ctrl.c(208): warning:  #550-D: variable "stree_i" was set but never used
-      float stree_p,stree_i,stree_d;
-..\Libraries\work\CTRL\ctrl.c(209): warning:  #177-D: variable "stree_zhi_p" was declared but never referenced
-          float stree_zhi_p,stree_zhi_i,stree_zhi_d;
-..\Libraries\work\CTRL\ctrl.c(209): warning:  #177-D: variable "stree_zhi_i" was declared but never referenced
-          float stree_zhi_p,stree_zhi_i,stree_zhi_d;
-..\Libraries\work\CTRL\ctrl.c(209): warning:  #177-D: variable "stree_zhi_d" was declared but never referenced
-          float stree_zhi_p,stree_zhi_i,stree_zhi_d;
-..\Libraries\work\CTRL\ctrl.c(210): warning:  #177-D: variable "pid_count" was declared but never referenced
-      int pid_count = 0,pid_errsum = 0;
-..\Libraries\work\CTRL\ctrl.c(210): warning:  #177-D: variable "pid_errsum" was declared but never referenced
-      int pid_count = 0,pid_errsum = 0;
-..\Libraries\work\CTRL\ctrl.c(211): warning:  #177-D: variable "HIGH_RUN" was declared but never referenced
-                float HIGH_RUN;
-..\Libraries\work\CTRL\ctrl.c(214): warning:  #550-D: variable "p1" was set but never used
-      float p1,p2,p3,p4,p5,p6;
-..\Libraries\work\CTRL\ctrl.c(214): warning:  #550-D: variable "p2" was set but never used
-      float p1,p2,p3,p4,p5,p6;
-..\Libraries\work\CTRL\ctrl.c(214): warning:  #550-D: variable "p3" was set but never used
-      float p1,p2,p3,p4,p5,p6;
-..\Libraries\work\CTRL\ctrl.c(214): warning:  #550-D: variable "p4" was set but never used
-      float p1,p2,p3,p4,p5,p6;
-..\Libraries\work\CTRL\ctrl.c(214): warning:  #177-D: variable "p5" was declared but never referenced
-      float p1,p2,p3,p4,p5,p6;
-..\Libraries\work\CTRL\ctrl.c(214): warning:  #177-D: variable "p6" was declared but never referenced
-      float p1,p2,p3,p4,p5,p6;
-..\Libraries\work\CTRL\ctrl.c(215): warning:  #177-D: variable "x" was declared but never referenced
-          int x;
-..\Libraries\work\CTRL\ctrl.c(252): warning:  #177-D: variable "stree_zhi_p" was declared but never referenced
-          float stree_zhi_p,stree_zhi_i,stree_zhi_d;
-..\Libraries\work\CTRL\ctrl.c(252): warning:  #177-D: variable "stree_zhi_i" was declared but never referenced
-          float stree_zhi_p,stree_zhi_i,stree_zhi_d;
-..\Libraries\work\CTRL\ctrl.c(252): warning:  #177-D: variable "stree_zhi_d" was declared but never referenced
-          float stree_zhi_p,stree_zhi_i,stree_zhi_d;
-..\Libraries\work\CTRL\ctrl.c(253): warning:  #177-D: variable "pid_count" was declared but never referenced
-      int pid_count = 0,pid_errsum = 0;
-..\Libraries\work\CTRL\ctrl.c(254): warning:  #177-D: variable "HIGH_RUN" was declared but never referenced
-                float HIGH_RUN;
-..\Libraries\work\CTRL\ctrl.c(282): warning:  #177-D: variable "overflow1" was declared but never referenced
-        int overflow1=0,overflow2=0;     //检测旁边跑到变量
-..\Libraries\work\CTRL\ctrl.c(282): warning:  #177-D: variable "overflow2" was declared but never referenced
-        int overflow1=0,overflow2=0;     //检测旁边跑到变量
-..\Libraries\work\CTRL\ctrl.c(283): warning:  #177-D: variable "sum_ad" was declared but never referenced
-        int sum_ad=0;
-..\Libraries\work\CTRL\ctrl.c(284): warning:  #177-D: variable "side_flag" was declared but never referenced
-        u8 side_flag=0;                    //检测旁边跑道标志位
-..\Libraries\work\CTRL\ctrl.c(503): warning:  #1-D: last line of file ends without a newline
-  }
-..\Libraries\work\CTRL\ctrl.c(470): warning:  #550-D: variable "turnErrSave" was set but never used
-    int turnErrSave=0;
-..\Libraries\work\CTRL\ctrl.c: 27 warnings, 0 errors
+..\Libraries\work\CONM\conm.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Libraries\app\app.h(51): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Libraries\work\UI\ui.c(83): warning:  #767-D: conversion from pointer to smaller integer
+                        key=(u8)OSMboxPend(msg_key,200,&err);      //等待按键邮箱
+..\Libraries\work\UI\ui.c(114): warning:  #111-D: statement is unreachable
+                                                break;
+..\Libraries\work\UI\ui.c(80): warning:  #177-D: variable "Dev" was declared but never referenced
+        u32 Dev;
+..\Libraries\work\UI\ui.c(164): warning:  #767-D: conversion from pointer to smaller integer
+                 key=(u8)OSMboxPend(msg_key,200,&err);//按键邮箱
+..\Libraries\work\UI\ui.c(206): warning:  #767-D: conversion from pointer to smaller integer
+                 key=(u8)OSMboxPend(msg_key,5,&err);//按键邮箱
+..\Libraries\work\UI\ui.c(173): warning:  #177-D: variable "SetArrow" was declared but never referenced
+    static u8 SetArrow = 2;
+..\Libraries\work\UI\ui.c(174): warning:  #177-D: variable "Page" was declared but never referenced
+        static u8 Page = 0;
+..\Libraries\work\UI\ui.c(175): warning:  #177-D: variable "Item" was declared but never referenced
+        static u8 Item = 1;
+..\Libraries\work\UI\ui.c(178): warning:  #177-D: variable "i" was declared but never referenced
+    u8 i,n;
+..\Libraries\work\UI\ui.c(178): warning:  #177-D: variable "n" was declared but never referenced
+    u8 i,n;
+..\Libraries\work\UI\ui.c(183): warning:  #550-D: variable "dnum" was set but never used
+        float dnum[9];
+..\Libraries\work\UI\ui.c(185): warning:  #177-D: variable "AR" was declared but never referenced
+    u8 AR[]="->";//显示箭头
+..\Libraries\work\UI\ui.c(186): warning:  #177-D: variable "AC" was declared but never referenced
+        u8 AC[]="  ";//清除箭头
+..\Libraries\work\UI\ui.c(194): warning:  #177-D: variable "SaveSetArrow" was declared but never referenced
+        u8 SaveSetArrow = 2;
+..\Libraries\work\UI\ui.c(195): warning:  #177-D: variable "ArrowState" was declared but never referenced
+        u16 ArrowState = 0;//箭头状态标记0:正常选择项 1:数值修改
+..\Libraries\work\UI\ui.c(196): warning:  #177-D: variable "text" was declared but never referenced
+    u8 text[5];
+..\Libraries\work\UI\ui.c(244): warning:  #47-D: incompatible redefinition of macro "SetOptionsNum" (declared at line 170)
+  #define SetOptionsNum 14 //设置项滚轮大小
+..\Libraries\work\UI\ui.c(295): warning:  #767-D: conversion from pointer to smaller integer
+                 key=(u8)OSMboxPend(msg_key,5,&err);//按键邮箱
+..\Libraries\work\UI\ui.c(247): warning:  #177-D: variable "SetArrow" was declared but never referenced
+        static u8 SetArrow = 2;
+..\Libraries\work\UI\ui.c(249): warning:  #177-D: variable "Item" was declared but never referenced
+        static u8 Item = 1;
+..\Libraries\work\UI\ui.c(256): warning:  #177-D: variable "SS" was declared but never referenced
+        u8 SS[SetOptionsNum][19]={
+..\Libraries\work\UI\ui.c(287): warning:  #177-D: variable "ArrowState" was declared but never referenced
+        u16 ArrowState = 0;//箭头状态标记0:正常选择项 1:数值修改
+..\Libraries\work\UI\ui.c(317): warning:  #47-D: incompatible redefinition of macro "SetOptionsNum" (declared at line 244)
+  #define SetOptionsNum 7 //设置项滚轮大小
+..\Libraries\work\UI\ui.c(636): warning:  #767-D: conversion from pointer to smaller integer
+                key=(u8)OSMboxPend(msg_key,0,&err);//按键邮箱
+..\Libraries\work\UI\ui.c: 29 warnings, 0 errors
 linking...
-Program Size: Code=51192 RO-data=5040 RW-data=652 ZI-data=23604  
+Program Size: Code=51408 RO-data=5040 RW-data=656 ZI-data=24120  
 FromELF: creating hex file...
-".\mk60d10\flash\templete.axf" - 0 Error(s), 27 Warning(s).
+".\mk60d10\flash\templete.axf" - 0 Error(s), 29 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   C:\Users\WJL-PC\Desktop\2017_6_2\MDK\RTE

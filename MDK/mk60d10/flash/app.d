@@ -35,3 +35,4 @@
 .\mk60d10\flash\app.o: ..\Libraries\drivers\K\inc\ftm.h
 .\mk60d10\flash\app.o: ..\Libraries\work\CONM\conm.h
 .\mk60d10\flash\app.o: ..\Libraries\work\CTRL\ctrl.h
+.\mk60d10\flash\app.o: ..\Libraries\drivers\K\inc\uart.h

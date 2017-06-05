@@ -2,14 +2,15 @@
 #include "ctrl.h"
 #include "ui.h"
 #include "ad.h"
-
+#include "uart.h"
+//分配内层堆栈 
 OS_STK  APP_START_STK[TASK_STK_SIZE];
 OS_STK  APP_UI_STK[UI_STK_SIZE];
 OS_STK  APP_KEY_STK[KEY_STK_SIZE];
 OS_STK  APP_AD_STK[AD_STK_SIZE];
 OS_STK  APP_SPEED_STK[SPEED_STK_SIZE];
 OS_STK  APP_TURN_STK[TURN_STK_SIZE];
-//OS_STK  APP_BLUETOOTH_STK[BLUETOOTH_STK_SIZE];    //蓝牙
+OS_STK  APP_BLUETOOTH_STK[BLUETOOTH_STK_SIZE];    //蓝牙堆栈
 //信号量 邮箱 
 OS_EVENT *msg_key;				  //按键邮箱块指针
 
@@ -27,7 +28,8 @@ u8 key;
 int speedswitch;
 //声明一个存放左右差值变量  
 int sum;
-
+//蓝牙向上位机存放数据用？？
+uint32_t instance;
 
 
 extern int ad1; 
@@ -260,6 +262,61 @@ void speedStartTask(void *pdata)
 	}
 
 }
+/************************************************************************
+蓝牙向上位机发送数据代码块    2017-6-5移植   2017-6-4做过测试  不好用
+移植光速蜗牛调试串口样例程序
+
+************************************************************************/
+void BluetoothStartTask(void *pdata)
+{
+  int a=0;
+	int num0=ad1;
+	int num1=ad3;
+	int num2=0;
+	int num3=0;
+	
+	unsigned char SBUF[12];
+	unsigned char verify1;
+	unsigned char verify2;
+	unsigned char i;
+	
+	SBUF[0]='S';
+	SBUF[1]=num0>>8;
+	SBUF[2]=num0;
+	SBUF[3]=num1>>8;
+	SBUF[4]=num1;
+	SBUF[5]=num2>>8;
+	SBUF[6]=num2;
+	SBUF[7]=num3>>8;
+	SBUF[8]=num3;
+	
+	pdata=pdata;
+	while(1)
+	{
+	 		verify1=0;
+		for(i=1;i<9;i++)
+		{
+			if(SBUF[i]!=0) 	verify1=(verify1<<1)|0x01;
+			else verify1=(verify1<<1)|0x00;
+		}
+		
+		verify2=0;
+		for(i=1;i<9;i++)
+		{
+			if(SBUF[i]!=0) 	verify2=(verify2<<1)|0x01;
+			else verify2=(verify2<<1)|0x00;
+		}
+		
+		SBUF[9]=verify1;
+		SBUF[10]=verify1;
+		SBUF[11]='E';
+		
+		UART_WriteByte(instance,SBUF[9]);
+		OSTimeDlyHMSM(0, 0, 0, 10);
+	}
+	
+}
+
 //舵机转角函任务
 void TurnStartTask(void *pdata)
 {
@@ -296,6 +353,9 @@ void AppStartTast(void *pdata)            //主任务
 		OSTaskCreate(TurnStartTask,(void *)0,
                 &APP_TURN_STK[TURN_STK_SIZE - 1],
                 APP_TURN_PRIO); 
+		OSTaskCreate(BluetoothStartTask,(void *)0,
+			           &APP_BLUETOOTH_STK[BLUETOOTH_STK_SIZE - 1],
+								 APP_BLUETOOTH_PRIO);
 			
 	OS_ENTER_CRITICAL();   //进入临界区
 		//开启时钟节拍中断

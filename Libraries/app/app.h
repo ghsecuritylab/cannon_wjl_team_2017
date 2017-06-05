@@ -18,7 +18,7 @@
 #define AD_STK_SIZE                (128)
 #define SPEED_STK_SIZE             (128)
 #define TURN_STK_SIZE             (128)
-//#define BLUETOOTH_STK_SIZE         (128)   //蓝牙
+#define BLUETOOTH_STK_SIZE         (128)   //蓝牙
 
 #define APP_START_TASK_PRIO        (4)
 #define APP_UI_PRIO                (9)
@@ -26,7 +26,7 @@
 #define APP_AD_PRIO                (5) 
 #define APP_SPEED_PRIO             (6) 
 #define APP_TURN_PRIO              (7) 
-//#define APP_BLUETOOTH_PRIO         (11)           //蓝牙
+#define APP_BLUETOOTH_PRIO         (11)           //蓝牙
 
 
 extern OS_STK  APP_START_STK[TASK_STK_SIZE];
@@ -47,4 +47,5 @@ void KeyStartTask(void *pdata);   //创建任务的任务
 void AdStartTask(void *pdata);
 void speedStartTask(void *pdata);
 void TurnStartTask(void *pdata);    //转向任务
+void BluetoothStartTask(void *pdata);
 #endif
