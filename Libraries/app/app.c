@@ -219,9 +219,9 @@ void AdStartTask(void *pdata)
 		  //    guiyi_qian();
 		//	    guiyi_ad3=ad4;
 		//	    guiyi_ad1=ad3;
-			guiyi();
+		//	guiyi();
 //			  max_min();
-			  sum_diff = (float)(((float)guiyi_ad1 - (float)guiyi_ad3)/((float)guiyi_ad1 + (float)guiyi_ad3))*1000;
+			//  sum_diff = (float)(((float)guiyi_ad1 - (float)guiyi_ad3)/((float)guiyi_ad1 + (float)guiyi_ad3))*1000;
 //        if(((sum_diff-sum_diff1)>60)||((sum_diff-sum_diff1)<-60))
 //					sum_diff=sum_diff1;
 //				if(adc_count > 10)
@@ -237,7 +237,7 @@ void AdStartTask(void *pdata)
 //				adc2 = ADC2_sum / adc_count;
 //				
 //			  adc_count++;
-				
+				sum_diff=ad3-ad4;
         OSTimeDlyHMSM(0, 0, 0, 5);
     }
 }
@@ -353,9 +353,9 @@ void AppStartTast(void *pdata)            //主任务
 		OSTaskCreate(TurnStartTask,(void *)0,
                 &APP_TURN_STK[TURN_STK_SIZE - 1],
                 APP_TURN_PRIO); 
-		OSTaskCreate(BluetoothStartTask,(void *)0,
-			           &APP_BLUETOOTH_STK[BLUETOOTH_STK_SIZE - 1],
-								 APP_BLUETOOTH_PRIO);
+//		OSTaskCreate(BluetoothStartTask,(void *)0,
+//			           &APP_BLUETOOTH_STK[BLUETOOTH_STK_SIZE - 1],
+//								 APP_BLUETOOTH_PRIO);
 			
 	OS_ENTER_CRITICAL();   //进入临界区
 		//开启时钟节拍中断

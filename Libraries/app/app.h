@@ -35,7 +35,7 @@ extern OS_STK  APP_KEY_STK[KEY_STK_SIZE];
 extern OS_STK  APP_AD_STK[AD_STK_SIZE];
 extern OS_STK  APP_SPEED_STK[SPEED_STK_SIZE];
 extern OS_STK  APP_TURN_STK[TURN_STK_SIZE];
-//extern OS_STK  APP_BLUETOOTH_STK[BLUETOOTH_STK_SIZE];    //¿∂—¿
+extern OS_STK  APP_BLUETOOTH_STK[BLUETOOTH_STK_SIZE];    //¿∂—¿
 
 extern OS_EVENT *msg_key;				  //∞¥º¸” œ‰øÈ÷∏’Î
 

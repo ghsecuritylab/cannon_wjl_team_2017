@@ -200,10 +200,14 @@ void speedPID(u32 nowValue)
 
 
 //×ªÏò¿ØÖÆ
+
+//2017-6-5    ×ªÏòPID    ²âÊý¾Ý ÄâºÏºó  Èý´Î·½ 
+
+// 
 void streePID(int nowValue)
 {
 //	FTM_PWM_ChangeDuty(HW_FTM1, HW_FTM_CH1, 1660);            //1940  1660  1370
-
+    
 	
     float stree_p,stree_i,stree_d;
 	  float stree_zhi_p,stree_zhi_i,stree_zhi_d;
@@ -218,24 +222,25 @@ void streePID(int nowValue)
     stree_i = streepid.i*0.01;
     stree_d = streepid.d*0.01;
 	
+	     p1 =    -0.1953;  //£¨£ (-0.3127, -0.07792)©
+       p2 =  0.4319;    // (-0.5462, 1.41)
+       p3 =  114;       // (93.51, 135.2)
+
+       p4 =  34.35;    // (-84.56, 153.3)
 //	     p1 =    0.007119 ;
 //       p2 =  -0.2827 ;
 //       p3 =    3.415 ;
 //       p4 =  -10.65  ;
 //       p5 =   40.22 ;
 //       p6 =  2.301 ;
-//	  x =  p1*nowValue*nowValue*nowValue*nowValue*nowValue + 
-//		     p2*nowValue*nowValue*nowValue*nowValue +
-//				 p3*nowValue*nowValue*nowValue + p4*nowValue*nowValue + p5*nowValue + p6;
-	 
-	     p1 =    -0.04893;
-       p2 =  0.1119;
-       p3 =  65.17;
-       p4 =  35.82;
+	  x =  p1*nowValue*nowValue*nowValue*nowValue +p2*nowValue*nowValue*nowValue+p3*nowValue*nowValue + p4;
+	 //coefficient (with 95% confidence bounds)
+	     
+
 
 //	 x =  p1*nowValue*nowValue*nowValue + p2*nowValue*nowValue + p3*nowValue + p4;
-	 
-		error[0] = nowValue;
+//	   nowValue=x;
+		error[0] = x;
 		Kpvalue =(int) (stree_p * error[0]);
 		Kdvalue = stree_d * (error[0] - error[1]);
 		resultturn =MEDIAN + Kpvalue + Kdvalue;
