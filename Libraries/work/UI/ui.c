@@ -80,6 +80,8 @@ u8 Menu_UI()
 	u32 Dev;
     while(1)
     {
+	FTM_PWM_ChangeDuty(HW_FTM0, HW_FTM_CH3,500 );
+	FTM_PWM_ChangeDuty(HW_FTM0, HW_FTM_CH2,500);
 			key=(u8)OSMboxPend(msg_key,200,&err);      //µÈ´ý°´¼üÓÊÏä
 			switch(key)
 			{

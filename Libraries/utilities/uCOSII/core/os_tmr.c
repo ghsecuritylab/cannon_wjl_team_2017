@@ -863,6 +863,7 @@ void  OSTmr_Init (void)
 #endif
 
     OSTmr_InitTask();
+		 //任务初始化
 }
 #endif
 

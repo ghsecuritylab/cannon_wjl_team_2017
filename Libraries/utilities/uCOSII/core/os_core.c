@@ -573,40 +573,50 @@ INT16U  OSEventPendMulti (OS_EVENT  **pevents_pend,
 void  OSInit (void)
 {
     OSInitHookBegin();                                           /* Call port specific initialization code   */
-
+     //																																特定端口初始化
     OS_InitMisc();                                               /* Initialize miscellaneous variables       */
-
+     //各种变量初始化
     OS_InitRdyList();                                            /* Initialize the Ready List                */
-
+      //初始化就绪列表
     OS_InitTCBList();                                            /* Initialize the free list of OS_TCBs      */
-
+      //初始化TCB储存模块
     OS_InitEventList();                                          /* Initialize the free list of OS_EVENTs    */
-
+ 	//初始化事件列表
+	
+	//注意以下是带有条件编辑得  只用if条件符合要求才会编译（初始化）
 #if (OS_FLAG_EN > 0u) && (OS_MAX_FLAGS > 0u)
-    OS_FlagInit();                                               /* Initialize the event flag structures     */
+    OS_FlagInit();                                               /* Initialize the event flag structures   
+																																			初始化事件标志位结构*/
 #endif
 
 #if (OS_MEM_EN > 0u) && (OS_MAX_MEM_PART > 0u)
-    OS_MemInit();                                                /* Initialize the memory manager            */
+    OS_MemInit();                                                /* Initialize the memory manager         
+																																				初始化 内存管理*/
 #endif
 
 #if (OS_Q_EN > 0u) && (OS_MAX_QS > 0u)
     OS_QInit();                                                  /* Initialize the message queue structures  */
+																																			//初始化信息队列
 #endif
 
     OS_InitTaskIdle();                                           /* Create the Idle Task                     */
+																																		//创建空闲任务
 #if OS_TASK_STAT_EN > 0u
     OS_InitTaskStat();                                           /* Create the Statistic Task                */
+																																	  //创建统计任务
 #endif
 
 #if OS_TMR_EN > 0u
     OSTmr_Init();                                                /* Initialize the Timer Manager             */
+																																	//初始化定时器管理
 #endif
 
     OSInitHookEnd();                                             /* Call port specific init. code            */
+																																		//通讯端口初始化  ？？（不一定对）
 
 #if OS_DEBUG_EN > 0u
     OSDebugInit();
+		  //debug 初始化 
 #endif
 }
 /*$PAGE*/

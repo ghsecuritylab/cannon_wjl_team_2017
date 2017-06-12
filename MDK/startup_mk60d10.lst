@@ -1149,10 +1149,11 @@ ARM Macro Assembler    Page 18
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4 --apcs=interw
 ork --depend=.\mk60d10\flash\startup_mk60d10.d -o.\mk60d10\flash\startup_mk60d1
-0.o -IC:\Users\WJL-PC\Desktop\2017_6_2\MDK\RTE -IE:\study\KEIL\ARM\PACK\Keil\Ki
-netis_K60_DFP\1.4.0\Device\Include -IE:\study\KEIL\ARM\CMSIS\Include --predefin
-e="__UVISION_VERSION SETA 514" --predefine="MK60DN512xxx10 SETA 1" --list=.\sta
-rtup_mk60d10.lst ..\Libraries\startup\DeviceSupport\MDK-ARM\startup_MK60D10.s
+0.o -IC:\Users\WJL-PC\Desktop\2017·É¿¨A³µ\MDK\RTE -IE:\study\KEIL\ARM\PACK\Keil
+\Kinetis_K60_DFP\1.4.0\Device\Include -IE:\study\KEIL\ARM\CMSIS\Include --prede
+fine="__UVISION_VERSION SETA 514" --predefine="MK60DN512xxx10 SETA 1" --list=.\
+startup_mk60d10.lst ..\Libraries\startup\DeviceSupport\MDK-ARM\startup_MK60D10.
+s
 
 
 

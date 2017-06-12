@@ -43,12 +43,24 @@ float sum_diff  = 0;
 
 void UiStartTask(void *pdata)    //UIÈÎÎñ
 {
-	
+	//u32 i;
+	//u32 l;
+	//u32 u;
 	pdata=pdata;
 	u8 ID=0;
 	while(1)
 	{
+//			FTM_PWM_ChangeDuty(HW_FTM0, HW_FTM_CH3,500 );
+//	FTM_PWM_ChangeDuty(HW_FTM0, HW_FTM_CH2,0);
 		ID = FunctionPointer[ID]();
+  // for(i=0;i<100000;i++)
+	//	{
+	//	  for(l=0;l<10000;l++)
+	//		 {
+	//		    for(u=0;u<10000;u++)
+	//			    ;
+	//		 }
+	//	}
 		OSTimeDlyHMSM(0, 0, 0, 10);
 	}
 }
@@ -219,9 +231,9 @@ void AdStartTask(void *pdata)
 		  //    guiyi_qian();
 		//	    guiyi_ad3=ad4;
 		//	    guiyi_ad1=ad3;
-		//	guiyi();
+			guiyi();
 //			  max_min();
-			//  sum_diff = (float)(((float)guiyi_ad1 - (float)guiyi_ad3)/((float)guiyi_ad1 + (float)guiyi_ad3))*1000;
+			  sum_diff = (float)(((float)guiyi_ad1 - (float)guiyi_ad3)/((float)guiyi_ad1 + (float)guiyi_ad3))*1000;
 //        if(((sum_diff-sum_diff1)>60)||((sum_diff-sum_diff1)<-60))
 //					sum_diff=sum_diff1;
 //				if(adc_count > 10)

@@ -11,7 +11,10 @@
 
 int main(void)
 {
+	
 	 allInit();
+	//FTM_PWM_ChangeDuty(HW_FTM0, HW_FTM_CH3,0 );
+//	FTM_PWM_ChangeDuty(HW_FTM0, HW_FTM_CH2,0);
 // flash_write(SECTOR_NUM, 0,(u32)(0));
 // flash_write(SECTOR_NUM, 4,(u32)(0));  
 // flash_write(SECTOR_NUM, 8,(u32)(0));  
@@ -26,14 +29,14 @@ int main(void)
 // flash_write(SECTOR_NUM, 44,(u32)(0));
 	
 
-    OSInit();  //OS初始化
-	
-		OSTaskCreate(AppStartTast,(void *)0,
-                &APP_START_STK[TASK_STK_SIZE - 1],
-                APP_START_TASK_PRIO); //create the first task
+   OSInit();  //OS初始化
 
-        
-    /* 控制权交给操作系统,在执行OSStart()之后操作系统开始进行任务调度 */
-    OSStart();
+	OSTaskCreate(AppStartTast,(void *)0,
+               &APP_START_STK[TASK_STK_SIZE - 1],
+               APP_START_TASK_PRIO); //create the first task
+
+       
+   /* 控制权交给操作系统,在执行OSStart()之后操作系统开始进行任务调度 */
+   OSStart();
 		/* 程序永远不会运行到这 */
 }
